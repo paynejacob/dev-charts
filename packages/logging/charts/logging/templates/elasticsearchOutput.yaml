@@ -1,0 +1,15 @@
+{{- if .Values.elasticsearchEnabled }}
+apiVersion: logging.banzaicloud.io/v1beta1
+kind: ClusterOutput
+metadata:
+  name: {{ .Release.Name }}-elasticsearch
+  namespace: {{ .Values.controlNamespace }}
+  labels:
+{{ include "logging-operator.labels" . | indent 4 }}
+spec:
+  elasticsearch:
+    host: {{ .Values.elasticsearch.host }}
+    port: {{ .Values.elasticsearch.port }}
+    scheme: {{ .Values.elasticsearch.scheme }}
+    index_name: {{ .Values.elasticsearch.index_name }}
+{{- end }}

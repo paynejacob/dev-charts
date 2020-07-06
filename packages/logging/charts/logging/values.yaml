@@ -8,8 +8,10 @@ logging-operator:
 
 controlNamespace: "cattle-logging"
 
-#output:
-#  elasticsearch:
-#    host: es.example.com
-#    port: 9200
-#    scheme: http
+elasticsearchEnabled: false
+
+elasticsearch:
+  host: ""
+  scheme: ""
+  port: ""
+  index_name: ""

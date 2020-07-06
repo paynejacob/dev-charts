@@ -7,4 +7,6 @@ metadata:
 {{ include "logging-operator.labels" . | indent 4 }}
 spec:
   outputRefs:
-    - {{ .Release.Name }}
+    {{- if .Values.elasticsearchEnabled }}
+    - {{ .Release.Name }}-elasticsearch
+    {{- end }}

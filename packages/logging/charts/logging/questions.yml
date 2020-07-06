@@ -1,0 +1,44 @@
+# es enabled
+# - host
+# - scheme
+# - certs
+# - index
+
+
+questions:
+  - variable: elasticsearchEnabled
+    default: "false"
+    description: "enable elasticsearch output for cluster logs"
+    type: boolean
+    required: false
+    label: "Enable Elasticsearch"
+    show_subquestions_if: true
+    group: "Output Settings"
+    subquestions:
+      - variable: "elasticsearch.host"
+        default: ""
+        requried: true
+        descripiton: "Hostname of elasticsearch output"
+        type: text
+        label: "Elasticsearch Host"
+
+      - variable: "elasticsearch.scheme"
+        default: "http"
+        requried: true
+        descripiton: "HTTP scheme of elasticsearch output"
+        type: text
+        label: "Elasticsearch Scheme"
+
+      - variable: "elasticsearch.port"
+        default: "9200"
+        requried: true
+        descripiton: "Port of elasticsearch output"
+        type: number
+        label: "Elasticsearch Port"
+
+      - variable: "elasticsearch.index_name"
+        default: ""
+        requried: true
+        descripiton: "Index of elasticsearch output"
+        type: text
+        label: "Elasticsearch Index"
