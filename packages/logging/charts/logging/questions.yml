@@ -12,7 +12,7 @@ questions:
     type: boolean
     required: false
     label: "Enable Elasticsearch"
-    show_subquestions_if: true
+    show_subquestion_if: true
     group: "Output Settings"
     subquestions:
       - variable: "elasticsearch.host"
