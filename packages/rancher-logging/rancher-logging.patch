@@ -1,6 +1,6 @@
 diff -x '*.tgz' -x '*.lock' -uNr packages/rancher-logging/charts-original/Chart.yaml packages/rancher-logging/charts/Chart.yaml
 --- packages/rancher-logging/charts-original/Chart.yaml	2020-07-14 06:18:23.000000000 -0700
-+++ packages/rancher-logging/charts/Chart.yaml	2020-07-29 13:30:52.000000000 -0700
++++ packages/rancher-logging/charts/Chart.yaml	2020-07-29 15:20:55.000000000 -0700
 @@ -1,5 +1,10 @@
  apiVersion: v1
  appVersion: 3.4.0
@@ -16,7 +16,7 @@ diff -x '*.tgz' -x '*.lock' -uNr packages/rancher-logging/charts-original/Chart.
 +  catalog.rancher.io/release-name: rancher-logging
 diff -x '*.tgz' -x '*.lock' -uNr packages/rancher-logging/charts-original/values.yaml packages/rancher-logging/charts/values.yaml
 --- packages/rancher-logging/charts-original/values.yaml	2020-07-14 06:18:23.000000000 -0700
-+++ packages/rancher-logging/charts/values.yaml	2020-07-29 13:51:42.000000000 -0700
++++ packages/rancher-logging/charts/values.yaml	2020-07-29 15:20:55.000000000 -0700
 @@ -18,7 +18,7 @@
  
  ## Deploy CRDs used by Logging Operator.
@@ -60,10 +60,9 @@ diff -x '*.tgz' -x '*.lock' -uNr packages/rancher-logging/charts-original/values
 +splunk:
 +  enabled: false
 +  host: ""
-+  port: 8088
++  hec_port: 8088
++  hec_token: ""
 +  protocol: http
 +  index: fluentd
 +  client_cert: ""
 +  client_key: ""
-+  insecure_ssl: false
-\ No newline at end of file
