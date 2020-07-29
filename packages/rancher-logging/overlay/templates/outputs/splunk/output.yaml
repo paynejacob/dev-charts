@@ -20,3 +20,4 @@ spec:
 {{- if .Values.splunk.insecure_ssl }}
     insecure_ssl: {{ .Values.splunk.insecure_ssl }}
 {{- end }}
+{{- end }}
