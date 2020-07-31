@@ -1,0 +1,10 @@
+{{- if .Values.syslog.enabled }}
+apiVersion: logging.banzaicloud.io/v1beta1
+kind: ClusterOutput
+metadata:
+  name: {{ .Release.Name }}-syslog
+spec:
+  servers: "fluentbit-syslog-forwarder.{{ .Release.Namespace }}.svc:24224"
+  require_ack_response: true
+  verify_connection_at_startup: true
+{{- end }}

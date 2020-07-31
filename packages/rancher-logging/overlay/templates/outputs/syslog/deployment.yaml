@@ -1,0 +1,30 @@
+{{- if .Values.syslog.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{[ .Release.Name ]}}-fluentbit-syslog-forwarder
+spec:
+  template:
+    spec:
+      containers:
+        - name: fluentbit
+          image: paynejacob/fluent-bit-out-syslog:latest
+          ports:
+            - containerPort: 24224
+          volumeMounts:
+            - mountPath: "/fluent-bit/etc/fluent-bit.conf"
+              name: configuration
+            - mountPath: "/fluent-bit/etc/root.ca"
+              name: configuration
+      volumes:
+        - name: configuration
+          secret:
+            secretName: "{{ .Release.Name }}-syslog"
+            items:
+              - key: "configuration"
+                path: "/fluent-bit/etc/fluent-bit.conf"
+  {{- if .Values.syslog.root_ca }}
+              - key: "root_ca"
+                path: "/fluent-bit/etc/root.ca"
+  {{- end }}
+{{- end }}
